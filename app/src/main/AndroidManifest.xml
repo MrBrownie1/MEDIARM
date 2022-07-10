@@ -11,7 +11,7 @@
         android:theme="@style/Theme.MEDIARM">
         <activity
             android:name=".Login"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
