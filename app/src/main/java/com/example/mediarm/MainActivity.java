@@ -8,27 +8,18 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 
-
-import androidx.appcompat.widget.SearchView;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import com.example.mediarm.ui.main.SectionsPagerAdapter;
 import com.example.mediarm.databinding.ActivityMainBinding;
-import com.google.firebase.FirebaseError;
-import com.google.firebase.auth.FirebaseAuthException;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    Button registrarte;
     private ActivityMainBinding binding;
 
     @Override
@@ -44,6 +35,17 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabs = binding.tabs;
         tabs.setupWithViewPager(viewPager);
         FloatingActionButton fab = binding.fab;
+
+
+        registrarte=findViewById(R.id.registrarte);//busca por id en la vista
+        registrarte.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent =new Intent(MainActivity.this, Registro.class);
+                startActivity(intent);//inicia la actividad
+            }
+
+        });
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
