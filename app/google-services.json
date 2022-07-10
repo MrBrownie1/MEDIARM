@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "322031661912",
+    "project_id": "bdmediarm",
+    "storage_bucket": "bdmediarm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:322031661912:android:830e79449cd3e5e5fe2b2d",
+        "android_client_info": {
+          "package_name": "com.example.mediarm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "322031661912-u65nmvr8p9ha8okbcnkatccbu0ursqlt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAS-htm2f7Sxx2XNRKHb1qB_d4-G74h6ZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "322031661912-u65nmvr8p9ha8okbcnkatccbu0ursqlt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

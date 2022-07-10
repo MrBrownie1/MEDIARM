@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MEDIARM</string>
+    <string name="tab_text_1">Tecnicas</string>
+    <string name="tab_text_2">Modelos RA</string>
+    <string name="tab_text_3">Informacion</string>
+    <string name="RCP">La reanimación cardiopulmonar (RCP)
+        es una técnica para salvar vidas que es útil en muchas
+        emergencias, como por ejemplo, un ataque cardíaco o un cuasi ahogamiento,
+        en los que la respiración o los latidos del corazón de una persona se han detenido. </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
