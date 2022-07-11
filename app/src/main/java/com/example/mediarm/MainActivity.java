@@ -16,11 +16,12 @@ import android.widget.Button;
 
 import com.example.mediarm.ui.main.SectionsPagerAdapter;
 import com.example.mediarm.databinding.ActivityMainBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
-
-    Button registrarte;
     private ActivityMainBinding binding;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_login);
+        mAuth = FirebaseAuth.getInstance();
 
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = binding.viewPager;
@@ -37,16 +39,6 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton fab = binding.fab;
 
 
-        registrarte=findViewById(R.id.registrarte);//busca por id en la vista
-        registrarte.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent intent =new Intent(MainActivity.this, Registro.class);
-                startActivity(intent);//inicia la actividad
-            }
-
-        });
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,6 +46,18 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user == null){
+            startActivity(new Intent(MainActivity.this, Login.class));
+        }else{
+            startActivity(new Intent(MainActivity.this, Principal.class));
+        }
     }
 
 

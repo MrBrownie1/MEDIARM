@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".Registro">
+    tools:context=".RegisterActivity">
 
     <EditText
         android:id="@+id/nombre"
@@ -89,7 +89,7 @@
         app:layout_constraintTop_toBottomOf="@+id/correo" />
 
     <EditText
-        android:id="@+id/password2"
+        android:id="@+id/numero"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -97,7 +97,7 @@
         android:layout_marginEnd="32dp"
         android:background="#30403232"
         android:ems="10"
-        android:hint="Confirma Contraseña"
+        android:hint="Numero"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:padding="20dp"
@@ -123,7 +123,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password2" />
+        app:layout_constraintTop_toBottomOf="@+id/numero" />
 
     <ImageView
         android:id="@+id/imageView4"
