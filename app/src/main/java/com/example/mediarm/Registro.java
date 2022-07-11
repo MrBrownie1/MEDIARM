@@ -22,11 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Registro extends AppCompatActivity {
-    Button registrar;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
 
-    }
         Button btn_register;
         EditText name, correo, contrasena;
         FirebaseFirestore mFirestore;
