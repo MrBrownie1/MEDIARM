@@ -1,8 +1,5 @@
 package com.example.mediarm;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,38 +10,40 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Login extends AppCompatActivity {
 
-    private EditText email;
-    private EditText password;
-    private Button login;
-    private Button registrarte;
-
-    private FirebaseAuth mAuth;
+    Button btnRegistro, btnLogin;
+    EditText password, email;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        email = findViewById(R.id.email);
-        password = findViewById(R.id.password);
-        registrarte = findViewById(R.id.registrarte);
-        login = findViewById(R.id.login);
+        email = findViewById(R.id.txtEmailL);
+        password = findViewById(R.id.txtPasswordL);
+        btnRegistro = findViewById(R.id.registrarte);
+        btnLogin = findViewById(R.id.login);
 
         mAuth = FirebaseAuth.getInstance();
 
-        login.setOnClickListener(view -> {
+        btnLogin.setOnClickListener(view -> {
             userLogin();
         });
 
-        registrarte.setOnClickListener(new View.OnClickListener() {
+        btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openRegisterActivity();
@@ -54,28 +53,28 @@ public class Login extends AppCompatActivity {
     }//End onCreate
 
     public void openRegisterActivity() {
-        Intent intent = new Intent(this, RegisterActivity.class);
+        Intent intent = new Intent(this, Registro.class);
         startActivity(intent);
     }// End openRegisterActivity
 
     public void userLogin(){
-        String mail = email.getText().toString();
-        String paassword = password.getText().toString();
+        String mail = email.getText().toString().trim();
+        String pass = password.getText().toString();
 
         if (TextUtils.isEmpty(mail)){
             email.setError("Ingrese un correo");
             email.requestFocus();
-        }else if (TextUtils.isEmpty(paassword)){
-            Toast.makeText(Login.this, "Ingrese una contraseña", Toast.LENGTH_SHORT).show();
+        }else if (TextUtils.isEmpty(pass)){
+            password.setError("Ingrese una contraseña");
             password.requestFocus();
         }else{
 
-            mAuth.signInWithEmailAndPassword(mail, paassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            mAuth.signInWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
                         Toast.makeText(Login.this, "Bienvenid@", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(Login.this, Principal.class));
+                        startActivity(new Intent(Login.this, MainActivity.class));
                     }else {
                         Log.w("TAG", "Error:", task.getException());
                     }
