@@ -27,4 +27,9 @@
     <string name="registrar">Registrar</string>
     <string name="login">Login</string>
     <string name="registrate">Registrate</string>
+    <string name="tecnicas_y_metodos">Tecnicas y Metodos</string>
+    <string name="cerrar_sesion">Cerrar sesion</string>
+    <string name="administrador">Administrador</string>
+    <string name="update">Update</string>
+    <string name="actualizar_datos">Actualizar datos</string>
 </resources>
