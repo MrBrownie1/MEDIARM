@@ -56,7 +56,7 @@ public class ActivityUpdate extends AppCompatActivity {
 
     private void updateUser(String name, String apeP, String phone, String id) {
         Map<String, Object> map = new HashMap<>();
-        map.put("nombre", name);
+        map.put("Nombre", name);
         map.put("Apellido", apeP);
         map.put("Numero", phone);;
 
@@ -78,7 +78,7 @@ public class ActivityUpdate extends AppCompatActivity {
         firebaseFirestore.collection("users").document(id).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                String nameU = documentSnapshot.getString("nombre");
+                String nameU = documentSnapshot.getString("Nombre");
                 String apePU = documentSnapshot.getString("Apellido");
                 String phoneMU = documentSnapshot.getString("Numero");
 
