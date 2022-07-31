@@ -32,4 +32,19 @@
     <string name="administrador">Administrador</string>
     <string name="update">Update</string>
     <string name="actualizar_datos">Actualizar datos</string>
+    <string name="subir_imagen">Subir Imagen</string>
+    <string name="medicina_basica">Medicina Basica</string>
+    <string name="agregar">Agregar</string>
+    <string name="vista">Vista</string>
+    <string name="nombre_del_concepto">Nombre del Concepto</string>
+    <string name="vista_de_pelicula">Vista de Pelicula</string>
+    <string name="descripcion">Descripcion</string>
+    <string name="vista_de_Imagen">Vista de Imagen</string>
+    <string name="descripcion_de_la_imagen">Descripcion de la imagen</string>
+    <string name="publicar_concepto">Publicar Concepto</string>
+    <string name="nombre_Concepto">---</string>
+    <string name="descripcion_Concepto">---</string>
+    <string name="nombre_Categoria">--</string>
+    <string name="conceptos">Conceptos</string>
+    <string name="ingresar">Ingresar</string>
 </resources>

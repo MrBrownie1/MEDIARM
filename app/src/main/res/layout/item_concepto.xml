@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="400dp"
+    app:cardBackgroundColor="#fff"
+    app:cardUseCompatPadding="true"
+    android:padding="2.0dp"
+    app:cardCornerRadius="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ImagenConcepto"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/NombreConceptoI"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:textSize="18sp"
+            android:textColor="#fff"
+            android:background="#01A9DB"
+            android:gravity="center"
+            android:text="@string/nombre_Concepto"/>
+
+        <TextView
+            android:id="@+id/DescripcionConceptoI"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:textSize="12sp"
+            android:textColor="#fff"
+            android:background="#01A9DB"
+            android:gravity="center"
+            android:text="@string/descripcion_Concepto"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.cardview.widget.CardView>

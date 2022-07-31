@@ -20,15 +20,18 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="340dp"
-        android:layout_height="39dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/cerrar_sesion"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerViewSingle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        android:gravity="center_vertical"/>
+    <Button
+        android:id="@+id/btnSubirImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/subir_imagen"
+        app:layout_constraintStart_toEndOf="@id/button2"
+        app:layout_constraintTop_toBottomOf="@id/textView"/>
 
     <ImageView
         android:id="@+id/imageView3"
