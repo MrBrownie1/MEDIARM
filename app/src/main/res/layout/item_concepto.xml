@@ -4,7 +4,7 @@
     android:foreground="?android:attr/selectableItemBackground"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="430dp"
     app:cardBackgroundColor="#fff"
     app:cardUseCompatPadding="true"
     android:padding="2.0dp"
@@ -41,6 +41,13 @@
             android:background="#01A9DB"
             android:gravity="center"
             android:text="@string/descripcion_Concepto"/>
+
+        <Button
+            android:id="@+id/btnIngresar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/ingresar">
+        </Button>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
