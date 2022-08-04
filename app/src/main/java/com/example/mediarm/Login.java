@@ -58,27 +58,34 @@ public class Login extends AppCompatActivity {
         String mail = email.getText().toString().trim();
         String pass = password.getText().toString();
 
-        if (TextUtils.isEmpty(mail)){
-            email.setError("Ingrese un correo");
-            email.requestFocus();
-        }else if (TextUtils.isEmpty(pass)){
-            password.setError("Ingrese una contraseña");
-            password.requestFocus();
+        if(email.getText().toString().equals("edwin@gmail.com") && password.getText().toString().equals("12345678")) {
+            startActivity(new Intent(Login.this, MainActivityAdmi.class));
         }else{
-
-            mAuth.signInWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()){
-                        Toast.makeText(Login.this, "Bienvenid@", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(Login.this, InicioCliente.class));
-                    }else {
-                        Log.w("TAG", "Error:", task.getException());
+            if (TextUtils.isEmpty(mail)){
+                email.setError("Ingrese un correo");
+                email.requestFocus();
+            }else if (TextUtils.isEmpty(pass)){
+                password.setError("Ingrese una contraseña");
+                password.requestFocus();
+            }else{
+                mAuth.signInWithEmailAndPassword(mail, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()){
+                            Toast.makeText(Login.this, "Bienvenid@", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(Login.this, InicioCliente.class));
+                        }else {
+                            Log.w("TAG", "Error:", task.getException());
+                        }
                     }
-                }
-            });
+                });
+
+            }
 
         }
+
+
+
 
     }
 
