@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,8 +20,15 @@ import com.example.mediarm.CategoriasU.ViewHolderCU;
 import com.example.mediarm.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class InicioCliente extends AppCompatActivity {
 
@@ -31,6 +40,12 @@ public class InicioCliente extends AppCompatActivity {
     FirebaseRecyclerAdapter<CategoriaU, ViewHolderCU> firebaseRecyclerAdapter;
     FirebaseRecyclerOptions<CategoriaU> optionsU;
 
+    TextView perfil, textview_email;
+    FirebaseAuth mAuth;
+    private String idUser;
+    FirebaseFirestore mFirestore;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,11 +54,31 @@ public class InicioCliente extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("CATEGORIA");
 
+        perfil = findViewById(R.id.textview_fullname);
+        textview_email = findViewById(R.id.textview_email);
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        mFirestore = FirebaseFirestore.getInstance();
+        idUser = mAuth.getCurrentUser().getUid();
+
+        textview_email.setText(user.getEmail());
+
+
         linearLayoutManager = new LinearLayoutManager(InicioCliente.this,LinearLayoutManager.HORIZONTAL, false);
         recyclerView = findViewById(R.id.recyclerViewCIU);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         verCategorias();
+
+        DocumentReference documentReference = mFirestore.collection("users").document(idUser);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                if(documentSnapshot == null || mAuth.getCurrentUser() == null) return;
+                perfil.setText(documentSnapshot.getString("Nombre"));
+            }
+        });
 
     }
 

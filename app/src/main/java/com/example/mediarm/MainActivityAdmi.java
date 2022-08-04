@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,7 +15,13 @@ import com.example.mediarm.ImgStorage.InicioStorage;
 import com.example.mediarm.ui.main.user;
 import com.example.mediarm.ui.main.userAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 
 public class MainActivityAdmi extends AppCompatActivity {
@@ -22,6 +30,8 @@ public class MainActivityAdmi extends AppCompatActivity {
     userAdapter mAdapter;
     FirebaseFirestore mFirestore;
     Button btnImg;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +42,11 @@ public class MainActivityAdmi extends AppCompatActivity {
         mFirestore = FirebaseFirestore.getInstance();
         mRecycler = findViewById(R.id.recyclerViewSingle);
         mRecycler.setLayoutManager(new LinearLayoutManager(this));
+
+
         Query query = mFirestore.collection("users");
+
+
 
         FirestoreRecyclerOptions<user> firestoreRecyclerOptions =
                 new FirestoreRecyclerOptions.Builder<user>().setQuery(query, user.class).build();
