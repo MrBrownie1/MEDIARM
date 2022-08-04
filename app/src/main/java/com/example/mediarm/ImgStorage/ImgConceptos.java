@@ -1,5 +1,8 @@
 package com.example.mediarm.ImgStorage;
 
+import static com.google.firebase.storage.FirebaseStorage.getInstance;
+
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,8 +23,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mediarm.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageReference;
 
 public class ImgConceptos extends AppCompatActivity {
 
@@ -81,7 +92,30 @@ public class ImgConceptos extends AppCompatActivity {
 
                     @Override
                     public void OnItemLongClick(View view, int position) {
-                        Toast.makeText(ImgConceptos.this, "Long click", Toast.LENGTH_SHORT).show();
+
+                        final String nombre = getItem(position).getNombre();
+                        final String imagen = getItem(position).getImg();
+                        final String concepto = getItem(position).getConcepto();
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ImgConceptos.this);
+                        String[] opciones = {"Actualizar", "Eliminar"};
+                        builder.setItems(opciones, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                if (i==0){
+                                    Intent intent = new Intent(ImgConceptos.this, AgregarConceptos.class);
+                                    intent.putExtra("NombreEnviado", nombre);
+                                    intent.putExtra("ImagenEnviada", imagen);
+                                    intent.putExtra("ConceptoEnviado", concepto);
+                                    startActivity(intent);
+
+                                }
+                                if(i==1){
+                                    EliminarImagen(nombre, concepto, imagen);
+                                }
+                            }
+                        });
+                        builder.create().show();
                     }
                 });
                 return viewHolderConceptos;
@@ -91,6 +125,52 @@ public class ImgConceptos extends AppCompatActivity {
         firebaseRecyclerAdapter.startListening();
 
         recyclerView.setAdapter(firebaseRecyclerAdapter);
+    }
+
+    private void EliminarImagen(final String NombreActual, final String DescripcionActual, final String ImagenActual){
+        AlertDialog.Builder builder = new AlertDialog.Builder(ImgConceptos.this);
+        builder.setTitle("Eliminar");
+        builder.setMessage("¿Desea eliminar la imagen?");
+        builder.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Query query = mRef.orderByChild("nombre").equalTo(NombreActual);
+                Query query1 = mRef.orderByChild("concepto").equalTo(DescripcionActual);
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot ds : snapshot.getChildren()){
+                            ds.getRef().removeValue();
+                        }
+                        Toast.makeText(ImgConceptos.this, "La imagen ha sido eliminada", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(ImgConceptos.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+                StorageReference ImagenSeleccionada = getInstance().getReferenceFromUrl(ImagenActual);
+                ImagenSeleccionada.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(ImgConceptos.this, "Eliminado", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(ImgConceptos.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(ImgConceptos.this, "Cancelado por el administrador", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.create().show();
     }
 
     @Override

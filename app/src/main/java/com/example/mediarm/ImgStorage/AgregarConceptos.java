@@ -45,6 +45,8 @@ public class AgregarConceptos extends AppCompatActivity {
     DatabaseReference DatabaseReference;
     ProgressDialog progressDialog;
 
+    String rNombre, rImagen, rConcepto;
+
     int Codigo_De_Solicitud_Imagen = 1;
 
     @Override
@@ -67,6 +69,9 @@ public class AgregarConceptos extends AppCompatActivity {
         DatabaseReference = FirebaseDatabase.getInstance().getReference(RutaDeBaseDeDatos);
         progressDialog = new ProgressDialog(AgregarConceptos.this);
 
+        Bundle intent = getIntent().getExtras();
+
+
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,6 +89,8 @@ public class AgregarConceptos extends AppCompatActivity {
             }
         });
     }
+
+
 
     private void SubirImagen(){
         if (RutaArchivoUri!= null){
