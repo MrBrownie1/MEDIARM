@@ -8,68 +8,79 @@
     tools:context=".MainActivityAdmi">
 
     <RelativeLayout
-        android:id="@+id/RDE"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:background="#fff"
         tools:ignore="MissingConstraints">
 
-        <TextView
-            android:id="@+id/textView2"
+        <RelativeLayout
+            android:paddingTop="20dp"
+            android:id="@+id/R1"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/administrador"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@id/textView2"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/admi_med" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView3"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_rounded"
+                android:gravity="center"
+                android:text="@string/cerrar_sesion"
+                tools:ignore="MissingConstraints" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/R2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/administrador"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            tools:ignore="MissingConstraints" />
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/R1"
+            android:paddingTop="20dp">
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/admi_icon"
-            android:layout_below="@id/textView2"/>
+            <Button
+                android:id="@+id/btnSubirImg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_rounded"
+                android:text="@string/subir_imagen" />
 
-        <TextView
-            android:id="@+id/textview_fullname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView3"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"
-            android:text="Perfil"
-            android:textSize="24sp" />
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@id/btnSubirImg"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/icn_med" />
 
-        <TextView
-            android:id="@+id/textview_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"
-            android:layout_below="@+id/textview_fullname"
-            android:text="email"
-            android:textSize="14sp" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/cerrar_sesion"
-            android:layout_below="@id/textview_email"
-            android:gravity="center_vertical"
-            android:background="@drawable/button_rounded"
-            tools:ignore="MissingConstraints" />
-        <Button
-            android:id="@+id/btnSubirImg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/subir_imagen"
-            android:layout_below="@id/textview_email"
-            android:layout_toRightOf="@id/button2"
-            android:background="@drawable/button_rounded"/>
 
+        </RelativeLayout>
 
     </RelativeLayout>
 
@@ -83,8 +94,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
-
-
 
 
 

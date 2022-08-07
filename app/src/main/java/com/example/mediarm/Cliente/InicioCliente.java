@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mediarm.CategoriasU.CategoriaU;
 import com.example.mediarm.CategoriasU.ConceptosUsuario;
 import com.example.mediarm.CategoriasU.ViewHolderCU;
+import com.example.mediarm.ImgStorage.ImgConceptos;
+import com.example.mediarm.Login;
 import com.example.mediarm.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -44,6 +47,7 @@ public class InicioCliente extends AppCompatActivity {
     FirebaseAuth mAuth;
     private String idUser;
     FirebaseFirestore mFirestore;
+    Button btnCerrar;
 
 
     @Override
@@ -56,6 +60,7 @@ public class InicioCliente extends AppCompatActivity {
 
         perfil = findViewById(R.id.textview_fullname);
         textview_email = findViewById(R.id.textview_email);
+        btnCerrar = findViewById(R.id.btnCerrarUs);
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
@@ -63,6 +68,15 @@ public class InicioCliente extends AppCompatActivity {
         idUser = mAuth.getCurrentUser().getUid();
 
         textview_email.setText(user.getEmail());
+
+        btnCerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(InicioCliente.this, Login.class));
+                Toast.makeText(InicioCliente.this, "Ha cerrado sesion", Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
 
         linearLayoutManager = new LinearLayoutManager(InicioCliente.this,LinearLayoutManager.HORIZONTAL, false);

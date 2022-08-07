@@ -2,7 +2,6 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#EDE5E5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Cliente.InicioCliente">
@@ -90,22 +89,14 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </RelativeLayout>
+
         <Button
-            android:id="@+id/btnCerrarU"
+            android:id="@+id/btnCerrarUs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/R2"
-            android:text="@string/cerrar_sesion"
-            android:background="@drawable/button_rounded">
+            android:background="@drawable/button_rounded"
+            android:text="@string/cerrar_sesion">
         </Button>
-
-
     </RelativeLayout>
-
-
-
-
-
-
-
 </ScrollView>

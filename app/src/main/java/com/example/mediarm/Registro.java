@@ -103,7 +103,7 @@ public class Registro extends AppCompatActivity {
                                 Log.d("Tag", "On Success: Datos registrados"+userID);
                             }
                         });
-                        Toast.makeText(Registro.this, "Usuario Regitrado", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Registro.this, "Usuario Registrado", Toast.LENGTH_LONG).show();
                         startActivity(new Intent(Registro.this, Login.class));
                     }else {
                         Toast.makeText(Registro.this, "Usuario no Registrado", Toast.LENGTH_LONG).show();

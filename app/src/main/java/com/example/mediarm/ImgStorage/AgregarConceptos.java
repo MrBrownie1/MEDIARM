@@ -36,7 +36,7 @@ public class AgregarConceptos extends AppCompatActivity {
     EditText nombreConcepto;
     EditText descripcionConcepto;
     ImageView imageView;
-    Button publicarConcepto;
+    Button publicarConcepto, btnR;
     String RutaDeAlmacenamiento = "Concepto_Subido";
     String RutaDeBaseDeDatos = "CONCEPTOS";
     Uri RutaArchivoUri;
@@ -57,13 +57,12 @@ public class AgregarConceptos extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.setTitle("Publicar");
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setDisplayShowHomeEnabled(true);
 
         nombreConcepto = findViewById(R.id.nombreConceptos);
         descripcionConcepto = findViewById(R.id.descripcionConceptos);
         imageView = findViewById(R.id.imgConceptos);
         publicarConcepto = findViewById(R.id.btnConcepto);
+        btnR = findViewById(R.id.btnRegresar);
 
         mStorageReference = FirebaseStorage.getInstance().getReference();
         DatabaseReference = FirebaseDatabase.getInstance().getReference(RutaDeBaseDeDatos);
@@ -86,6 +85,13 @@ public class AgregarConceptos extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SubirImagen();
+            }
+        });
+
+        btnR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AgregarConceptos.this, ImgConceptos.class));
             }
         });
     }
