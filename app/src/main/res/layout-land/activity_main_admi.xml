@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context=".MainActivityAdmi">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="333dp"
+        android:layout_height="257dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="-1dp">
+
+        <RelativeLayout
+            android:id="@+id/R1"
+            android:layout_width="177dp"
+            android:layout_height="244dp"
+            android:paddingStart="20dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="20dp">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/administrador"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@id/textView2"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/admi_med1" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView3"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_rounded"
+                android:gravity="center"
+                android:text="@string/cerrar_sesion"
+                tools:ignore="MissingConstraints" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/R2"
+            android:layout_width="154dp"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/R1"
+            android:paddingTop="20dp">
+
+            <Button
+                android:id="@+id/btnSubirImg"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_rounded"
+                android:text="@string/subir_imagen" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_below="@id/btnSubirImg"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/icn_med1" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewSingle"
+        android:layout_width="388dp"
+        android:layout_height="474dp"
+        app:layout_constraintStart_toEndOf="@+id/relativeLayout"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
