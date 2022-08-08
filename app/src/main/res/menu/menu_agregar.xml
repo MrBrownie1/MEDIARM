@@ -6,6 +6,6 @@
         android:id="@+id/Agregar"
         android:title="@string/agregar"
         android:icon="@drawable/agregar_icon"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
 
 </menu>
