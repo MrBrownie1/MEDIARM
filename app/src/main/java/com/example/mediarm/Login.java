@@ -76,6 +76,7 @@ public class Login extends AppCompatActivity {
                             startActivity(new Intent(Login.this, InicioCliente.class));
                         }else {
                             Log.w("TAG", "Error:", task.getException());
+                            Toast.makeText(Login.this, "Error, Intente de nuevo", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

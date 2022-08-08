@@ -5,7 +5,7 @@
     <item
         android:id="@+id/Vista"
         android:title="@string/vista"
-        android:icon="@drawable/vista_icon"
+        android:icon="@drawable/ic_back2"
         app:showAsAction="ifRoom"/>
 
 </menu>

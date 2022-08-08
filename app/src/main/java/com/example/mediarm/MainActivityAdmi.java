@@ -32,7 +32,7 @@ public class MainActivityAdmi extends AppCompatActivity {
     RecyclerView mRecycler;
     userAdapter mAdapter;
     FirebaseFirestore mFirestore;
-    Button btnImg;
+    Button btnImg, btnCerrar;
 
 
 
@@ -45,6 +45,14 @@ public class MainActivityAdmi extends AppCompatActivity {
         mFirestore = FirebaseFirestore.getInstance();
         mRecycler = findViewById(R.id.recyclerViewSingle);
         mRecycler.setLayoutManager(new LinearLayoutManager(this));
+        btnCerrar = findViewById(R.id.button2);
+
+        btnCerrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivityAdmi.this, Login.class));
+            }
+        });
 
 
         Query query = mFirestore.collection("users");
@@ -58,12 +66,16 @@ public class MainActivityAdmi extends AppCompatActivity {
         mAdapter.notifyDataSetChanged();
         mRecycler.setAdapter(mAdapter);
 
+
+
         btnImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivityAdmi.this, ImgConceptos.class));
             }
         });
+
+
     }
 
     @Override

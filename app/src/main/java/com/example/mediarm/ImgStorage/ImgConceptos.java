@@ -41,7 +41,6 @@ public class ImgConceptos extends AppCompatActivity {
     RecyclerView recyclerView;
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mRef;
-    Button btnCerrar;
 
     FirebaseRecyclerAdapter<Conceptos, ViewHolderConceptos> firebaseRecyclerAdapter;
     FirebaseRecyclerOptions<Conceptos> options;
@@ -57,13 +56,12 @@ public class ImgConceptos extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-        btnCerrar = findViewById(R.id.btnCerrarUs);
+
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mRef = mFirebaseDatabase.getReference("CONCEPTOS");
 
         ListarImagenes();
-
 
     }
 
@@ -190,6 +188,7 @@ public class ImgConceptos extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_vista, menu);
         menuInflater.inflate(R.menu.menu_agregar, menu);
         return super.onCreateOptionsMenu(menu);
     }
@@ -198,7 +197,9 @@ public class ImgConceptos extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.Agregar) {
+        if(item.getItemId() == R.id.Vista){
+            startActivity(new Intent(ImgConceptos.this, MainActivityAdmi.class));
+        }if (item.getItemId() == R.id.Agregar) {
             startActivity(new Intent(ImgConceptos.this, AgregarConceptos.class));
         }
         return super.onOptionsItemSelected(item);

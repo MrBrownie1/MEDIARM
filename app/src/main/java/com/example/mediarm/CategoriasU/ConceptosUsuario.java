@@ -1,5 +1,6 @@
 package com.example.mediarm.CategoriasU;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,7 +16,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mediarm.Cliente.InicioCliente;
+import com.example.mediarm.ImgStorage.AgregarConceptos;
 import com.example.mediarm.ImgStorage.Conceptos;
+import com.example.mediarm.ImgStorage.ImgConceptos;
 import com.example.mediarm.ImgStorage.ViewHolderConceptos;
 import com.example.mediarm.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -40,8 +44,6 @@ public class ConceptosUsuario extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         assert actionBar != null;
         actionBar.setTitle("Imagenes");
-        actionBar.setDisplayShowCustomEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
 
         recyclerViewC= findViewById(R.id.recyclerViewC);
         recyclerViewC.setHasFixedSize(true);
@@ -111,6 +113,7 @@ public class ConceptosUsuario extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.Vista) {
+            startActivity(new Intent(ConceptosUsuario.this, InicioCliente.class));
             Toast.makeText(this, "Listar Imagenes", Toast.LENGTH_SHORT).show();
         }
         return super.onOptionsItemSelected(item);
