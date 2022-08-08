@@ -38,7 +38,7 @@
                 android:layout_below="@id/textView2"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="15dp"
-                android:src="@drawable/admi_med" />
+                android:src="@drawable/admi_med1" />
 
             <Button
                 android:id="@+id/button2"
