@@ -76,7 +76,7 @@
                 android:layout_below="@id/btnSubirImg"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="15dp"
-                android:src="@drawable/icn_med" />
+                android:src="@drawable/icn_med1" />
 
 
 
