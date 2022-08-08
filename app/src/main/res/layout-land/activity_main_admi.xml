@@ -4,20 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#51219E9E"
+    android:background="#fff"
     tools:context=".MainActivityAdmi">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        tools:ignore="MissingConstraints">
+        android:id="@+id/relativeLayout"
+        android:layout_width="333dp"
+        android:layout_height="257dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="-1dp">
 
         <RelativeLayout
-            android:paddingTop="20dp"
             android:id="@+id/R1"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_width="177dp"
+            android:layout_height="244dp"
             android:paddingStart="20dp"
+            android:paddingTop="20dp"
             android:paddingEnd="20dp">
 
             <TextView
@@ -27,7 +29,7 @@
                 android:gravity="center"
                 android:text="@string/administrador"
                 android:textColor="@color/black"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 tools:ignore="MissingConstraints" />
 
@@ -56,14 +58,14 @@
 
         <RelativeLayout
             android:id="@+id/R2"
-            android:layout_width="match_parent"
+            android:layout_width="154dp"
             android:layout_height="match_parent"
             android:layout_toRightOf="@+id/R1"
             android:paddingTop="20dp">
 
             <Button
                 android:id="@+id/btnSubirImg"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/button_rounded"
@@ -79,21 +81,16 @@
                 android:src="@drawable/icn_med1" />
 
 
-
         </RelativeLayout>
 
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewSingle"
-        android:layout_width="390dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.238"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        android:layout_width="388dp"
+        android:layout_height="474dp"
+        app:layout_constraintStart_toEndOf="@+id/relativeLayout"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
